@@ -1,0 +1,54 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeUp, viewportOnce } from "@/lib/motion";
+
+type Props = {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  watermark?: string;
+  align?: "left" | "center";
+};
+
+export default function SectionHeading({
+  eyebrow,
+  title,
+  description,
+  watermark,
+  align = "left",
+}: Props) {
+  const alignClasses =
+    align === "center"
+      ? "text-center mx-auto items-center"
+      : "text-left items-start";
+
+  return (
+    <div className="relative">
+      {watermark && (
+        <motion.span
+          aria-hidden
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="section-watermark"
+        >
+          {watermark}
+        </motion.span>
+      )}
+
+      <motion.header
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+        className={`relative flex flex-col max-w-2xl ${alignClasses}`}
+      >
+        <span className="eyebrow">{eyebrow}</span>
+        <h2 className="display-md mt-6 text-fg text-balance">{title}</h2>
+        {description && <p className="lead mt-6 text-balance">{description}</p>}
+      </motion.header>
+    </div>
+  );
+}
