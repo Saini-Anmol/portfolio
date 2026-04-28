@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GraduationCap, Users } from "lucide-react";
-import SectionHeading from "./SectionHeading";
+import SectionHeading, { type AccentName } from "./SectionHeading";
 import Spotlight from "./Spotlight";
 import { config } from "@/data/config";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
@@ -13,7 +13,11 @@ type Item = {
   org: string;
   meta?: string;
   detail?: string;
+  accent: AccentName;
 };
+
+const EDUCATION_ACCENTS: AccentName[] = ["violet", "sky"];
+const ROLE_ACCENTS: AccentName[] = ["emerald", "cyan", "rose", "amber"];
 
 function Column({ items, eyebrow }: { items: Item[]; eyebrow: string }) {
   return (
@@ -27,18 +31,21 @@ function Column({ items, eyebrow }: { items: Item[]; eyebrow: string }) {
         className="space-y-5"
       >
         {items.map((item, idx) => (
-          <motion.div key={item.title + idx} variants={fadeUp}>
+          <motion.div
+            key={item.title + idx}
+            variants={fadeUp}
+            data-accent={item.accent}
+          >
             <Spotlight as="div" className="card-pad">
               <div className="relative z-[1] flex items-start gap-5 group/edu">
-                <span className="relative inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-brand/30 bg-brand/10 text-brand-bright shadow-inner-highlight transition-transform duration-300 ease-out-expo group-hover/edu:scale-110">
-                  <span className="absolute inset-0 rounded-xl bg-brand-gradient-soft" />
+                <span className="icon-orb h-12 w-12 transition-transform duration-300 ease-out-expo group-hover/edu:scale-110">
                   <span className="relative">{item.icon}</span>
                 </span>
                 <div className="flex-1 min-w-0">
                   <h4 className="text-[17px] md:text-[18px] font-bold text-fg leading-snug">
                     {item.title}
                   </h4>
-                  <p className="mt-2 text-[15px] text-brand-bright font-semibold">
+                  <p className="mt-2 text-[15px] text-accent font-semibold">
                     {item.org}
                   </p>
                   {item.meta && (
@@ -62,29 +69,32 @@ function Column({ items, eyebrow }: { items: Item[]; eyebrow: string }) {
 }
 
 export default function Education() {
-  const educationItems: Item[] = config.education.map((e) => ({
+  const educationItems: Item[] = config.education.map((e, i) => ({
     icon: <GraduationCap size={20} strokeWidth={1.8} />,
     title: e.degree,
     org: e.institution,
     meta: [e.period, e.location].filter(Boolean).join("  ·  "),
     detail: e.score,
+    accent: EDUCATION_ACCENTS[i % EDUCATION_ACCENTS.length],
   }));
 
-  const roleItems: Item[] = config.roles.map((r) => ({
+  const roleItems: Item[] = config.roles.map((r, i) => ({
     icon: <Users size={20} strokeWidth={1.8} />,
     title: r.title,
     org: r.org,
     detail: r.detail,
+    accent: ROLE_ACCENTS[i % ROLE_ACCENTS.length],
   }));
 
   return (
-    <section id="education" className="section">
+    <section id="education" className="section" data-accent="violet">
       <div className="container-x space-y-16 md:space-y-24">
         <SectionHeading
           eyebrow="06 / Education"
           title="Education & roles"
           description="Where I've studied, and the leadership roles I've taken on outside the classroom."
           watermark="06"
+          accent="violet"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-14">

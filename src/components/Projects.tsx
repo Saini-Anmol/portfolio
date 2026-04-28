@@ -2,20 +2,24 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
-import SectionHeading from "./SectionHeading";
+import SectionHeading, { type AccentName } from "./SectionHeading";
 import Spotlight from "./Spotlight";
 import { config } from "@/data/config";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
+// Each project card gets its own color theme
+const PROJECT_ACCENTS: AccentName[] = ["cyan", "rose", "violet"];
+
 export default function Projects() {
   return (
-    <section id="projects" className="section">
+    <section id="projects" className="section" data-accent="pink">
       <div className="container-x space-y-16 md:space-y-24">
         <SectionHeading
           eyebrow="03 / Projects"
           title="Selected work"
           description="A mix of applied AI, NLP, and full-stack systems I've shipped — from research prototypes to deployable products."
           watermark="03"
+          accent="pink"
         />
 
         <motion.div
@@ -25,10 +29,16 @@ export default function Projects() {
           viewport={viewportOnce}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
         >
-          {config.projects.map((p) => {
+          {config.projects.map((p, idx) => {
             const primaryLink = p.links?.[0];
+            const accent = PROJECT_ACCENTS[idx % PROJECT_ACCENTS.length];
             return (
-              <motion.div key={p.title} variants={fadeUp} className="h-full">
+              <motion.div
+                key={p.title}
+                variants={fadeUp}
+                className="h-full"
+                data-accent={accent}
+              >
                 <Spotlight
                   as="article"
                   tilt
@@ -38,10 +48,10 @@ export default function Projects() {
                   {/* Decorative corner gradient */}
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute -top-px -right-px h-32 w-32 rounded-bl-[80px] opacity-60"
+                    className="pointer-events-none absolute -top-px -right-px h-32 w-32 rounded-bl-[80px] opacity-80"
                     style={{
                       background:
-                        "radial-gradient(circle at top right, rgba(99,102,241,0.18), transparent 70%)",
+                        "radial-gradient(circle at top right, rgb(var(--accent-rgb) / 0.28), transparent 70%)",
                     }}
                   />
 
@@ -54,7 +64,7 @@ export default function Projects() {
                             {p.highlight}
                           </span>
                         )}
-                        <h3 className="text-h2 font-bold text-fg leading-tight transition-colors duration-300 group-hover/card:text-brand-bright">
+                        <h3 className="text-h2 font-bold text-fg leading-tight transition-colors duration-300 group-hover/card:text-accent">
                           {p.title}
                         </h3>
                         <p className="mt-3 font-mono text-[12px] uppercase tracking-[0.18em] text-fg-subtle">
@@ -67,7 +77,10 @@ export default function Projects() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={primaryLink.label}
-                          className="icon-btn shrink-0 group-hover/card:border-brand/40 group-hover/card:bg-brand/10 group-hover/card:text-brand-bright"
+                          className="icon-btn shrink-0 group-hover/card:border-accent group-hover/card:text-accent"
+                          style={{
+                            ["--hover-border" as never]: "rgb(var(--accent-rgb))",
+                          }}
                         >
                           <ArrowUpRight
                             size={17}

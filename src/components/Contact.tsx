@@ -10,10 +10,15 @@ import { easeOutExpo } from "@/lib/motion";
 
 export default function Contact() {
   return (
-    <section id="contact" className="section relative overflow-hidden">
+    <section
+      id="contact"
+      className="section relative overflow-hidden"
+      data-accent="indigo"
+    >
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-32 left-1/2 h-80 w-[44rem] -translate-x-1/2 rounded-full bg-brand/18 blur-[140px]" />
-        <div className="absolute bottom-0 left-1/4 h-60 w-[30rem] rounded-full bg-accent-pink/10 blur-[120px]" />
+        <div className="absolute -top-32 left-1/4 h-80 w-[36rem] rounded-full bg-accent-cyan/14 blur-[140px]" />
+        <div className="absolute -top-32 right-1/4 h-80 w-[36rem] rounded-full bg-brand/18 blur-[140px]" />
+        <div className="absolute bottom-0 left-1/3 h-60 w-[30rem] rounded-full bg-accent-pink/12 blur-[120px]" />
       </div>
 
       <div className="container-x space-y-16 md:space-y-24">
@@ -23,6 +28,7 @@ export default function Contact() {
           description="I'm currently open to internships, full-time roles, and interesting collaborations. The fastest way to reach me is email."
           align="center"
           watermark="07"
+          accent="indigo"
         />
 
         <motion.div
@@ -35,13 +41,12 @@ export default function Contact() {
           <div className="card-glass relative overflow-hidden p-10 md:p-16 text-center">
             <div className="pointer-events-none absolute inset-0 dot-pattern opacity-50" />
             {/* Animated gradient ring */}
-            <div className="pointer-events-none absolute -inset-px rounded-xl opacity-40">
+            <div className="pointer-events-none absolute -inset-px rounded-xl opacity-60">
               <div
-                className="absolute inset-0 rounded-xl"
+                className="absolute inset-0 rounded-xl animate-spin-slow [animation-duration:18s]"
                 style={{
                   background:
-                    "conic-gradient(from 0deg, transparent 0%, rgba(99,102,241,0.5) 25%, transparent 50%, rgba(236,72,153,0.4) 75%, transparent 100%)",
-                  animation: "gradient-pan 14s linear infinite",
+                    "conic-gradient(from 0deg, transparent 0%, rgb(var(--brand) / 0.55) 25%, transparent 50%, rgb(236 72 153 / 0.45) 75%, transparent 100%)",
                 }}
               />
             </div>

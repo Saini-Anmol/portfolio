@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
+import AmbientBackground from "@/components/AmbientBackground";
+import CursorGlow from "@/components/CursorGlow";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
@@ -13,6 +15,8 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
+      <AmbientBackground />
+      <CursorGlow />
       <ScrollProgress />
       <Navbar />
       <main>

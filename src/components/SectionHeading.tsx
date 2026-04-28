@@ -3,12 +3,27 @@
 import { motion } from "framer-motion";
 import { fadeUp, viewportOnce } from "@/lib/motion";
 
+export type AccentName =
+  | "indigo"
+  | "cyan"
+  | "emerald"
+  | "amber"
+  | "pink"
+  | "violet"
+  | "rose"
+  | "sky"
+  | "teal"
+  | "orange"
+  | "fuchsia"
+  | "lime";
+
 type Props = {
   eyebrow: string;
   title: string;
   description?: string;
   watermark?: string;
   align?: "left" | "center";
+  accent?: AccentName;
 };
 
 export default function SectionHeading({
@@ -17,6 +32,7 @@ export default function SectionHeading({
   description,
   watermark,
   align = "left",
+  accent,
 }: Props) {
   const alignClasses =
     align === "center"
@@ -24,7 +40,7 @@ export default function SectionHeading({
       : "text-left items-start";
 
   return (
-    <div className="relative">
+    <div className="relative" data-accent={accent}>
       {watermark && (
         <motion.span
           aria-hidden

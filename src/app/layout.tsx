@@ -38,16 +38,37 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0c",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f8f8fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0c" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
+
+/**
+ * Sets the theme class on <html> BEFORE React hydrates, preventing flash.
+ * Reads from localStorage with system preference fallback.
+ */
+const themeInitScript = `
+(function() {
+  try {
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = stored || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.classList.add('dark');
+  } catch (e) {}
+})();
+`.trim();
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${jakarta.variable} ${jetbrains.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="noise">{children}</body>
     </html>
   );

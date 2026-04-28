@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { config } from "@/data/config";
 import { easeOutExpo } from "@/lib/motion";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,7 +19,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Track active section via IntersectionObserver
   useEffect(() => {
     const ids = config.nav.map((n) => n.href.replace("#", ""));
     const sections = ids
@@ -59,20 +59,18 @@ export default function Navbar() {
     >
       <div className="container-x pt-4 md:pt-5">
         <nav
-          className={`relative flex h-14 md:h-16 items-center justify-between rounded-pill border px-4 md:px-5 transition-all duration-450 ease-out-expo ${
+          className={`relative flex h-14 md:h-16 items-center justify-between rounded-pill border px-3 md:px-4 transition-all duration-450 ease-out-expo ${
             scrolled
-              ? "border-border bg-bg-card/70 backdrop-blur-xl shadow-[0_8px_32px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_0_rgba(255,255,255,0.04)]"
+              ? "border-border bg-bg-card/70 backdrop-blur-xl shadow-soft"
               : "border-transparent bg-transparent"
           }`}
         >
           <a
             href="#top"
-            className="group inline-flex items-center gap-2 font-mono text-[13px] font-medium tracking-tight text-fg"
+            className="group inline-flex items-center gap-2 font-mono text-[13px] font-medium tracking-tight text-fg pl-2"
           >
             <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-md bg-brand-gradient text-brand-on shadow-brand-glow transition-transform duration-300 ease-out-expo group-hover:scale-110">
-              <span className="font-bold">
-                {config.personal.firstName[0]}
-              </span>
+              <span className="font-bold">{config.personal.firstName[0]}</span>
             </span>
             <span className="hidden sm:inline text-fg-muted transition-colors group-hover:text-fg">
               {config.personal.firstName.toLowerCase()}
@@ -105,7 +103,8 @@ export default function Navbar() {
             })}
           </ul>
 
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center gap-2">
+            <ThemeToggle />
             <a
               href={config.personal.resumeUrl}
               target="_blank"
@@ -116,25 +115,28 @@ export default function Navbar() {
             </a>
           </div>
 
-          <button
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-pill border border-border text-fg transition-colors hover:border-brand/40 hover:text-brand-bright"
-            onClick={() => setOpen((s) => !s)}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={open ? "x" : "m"}
-                initial={{ rotate: -45, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 45, opacity: 0 }}
-                transition={{ duration: 0.18 }}
-                className="inline-flex"
-              >
-                {open ? <X size={17} /> : <Menu size={17} />}
-              </motion.span>
-            </AnimatePresence>
-          </button>
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <button
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-pill border border-border text-fg transition-colors hover:border-brand/40 hover:text-brand"
+              onClick={() => setOpen((s) => !s)}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={open ? "x" : "m"}
+                  initial={{ rotate: -45, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 45, opacity: 0 }}
+                  transition={{ duration: 0.18 }}
+                  className="inline-flex"
+                >
+                  {open ? <X size={17} /> : <Menu size={17} />}
+                </motion.span>
+              </AnimatePresence>
+            </button>
+          </div>
         </nav>
       </div>
 
@@ -148,7 +150,7 @@ export default function Navbar() {
             transition={{ duration: 0.25, ease: easeOutExpo }}
             className="md:hidden container-x mt-3"
           >
-            <div className="rounded-xl border border-border bg-bg-card/90 backdrop-blur-xl p-3 shadow-card-hover">
+            <div className="rounded-xl border border-border bg-bg-card backdrop-blur-xl p-3 shadow-card-hover">
               <ul className="flex flex-col gap-0.5">
                 {config.nav.map((item, i) => (
                   <motion.li

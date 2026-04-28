@@ -9,13 +9,14 @@ import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 export default function Experience() {
   return (
-    <section id="experience" className="section">
+    <section id="experience" className="section" data-accent="emerald">
       <div className="container-x space-y-16 md:space-y-24">
         <SectionHeading
           eyebrow="02 / Experience"
           title="Where I've worked"
           description="Roles where I've shipped real systems and learned from talented teams."
           watermark="02"
+          accent="emerald"
         />
 
         <motion.div
@@ -27,7 +28,11 @@ export default function Experience() {
         >
           <span
             aria-hidden
-            className="absolute left-[23px] top-3 bottom-3 w-px bg-gradient-to-b from-brand via-border to-transparent"
+            className="absolute left-[23px] top-3 bottom-3 w-px"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgb(var(--accent-rgb)) 0%, rgb(var(--border)) 60%, transparent 100%)",
+            }}
           />
 
           <ul className="space-y-7 md:space-y-9">
@@ -37,16 +42,8 @@ export default function Experience() {
                 variants={fadeUp}
                 className="relative pl-16 md:pl-24"
               >
-                <span
-                  aria-hidden
-                  className="absolute left-0 top-3 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-bg-card shadow-inner-highlight"
-                >
-                  <span className="absolute inset-0 rounded-xl bg-brand-gradient-soft" />
-                  <Briefcase
-                    size={17}
-                    strokeWidth={1.8}
-                    className="relative text-brand-bright"
-                  />
+                <span aria-hidden className="icon-orb absolute left-0 top-3 h-12 w-12">
+                  <Briefcase size={17} strokeWidth={1.8} className="relative" />
                 </span>
 
                 <Spotlight as="article" className="card-pad">
@@ -56,7 +53,7 @@ export default function Experience() {
                         <h3 className="text-h2 font-bold text-fg leading-tight">
                           {item.role}
                         </h3>
-                        <p className="mt-2 text-[16px] text-brand-bright font-semibold">
+                        <p className="mt-2 text-[16px] text-accent font-semibold">
                           {item.org}
                         </p>
                       </div>

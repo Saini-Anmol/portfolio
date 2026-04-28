@@ -216,13 +216,12 @@ export default function Hero() {
             >
               <div className="card-glass card-pad relative overflow-hidden">
                 {/* Animated gradient ring */}
-                <div className="pointer-events-none absolute -inset-px rounded-xl opacity-50">
+                <div className="pointer-events-none absolute -inset-px rounded-xl opacity-60">
                   <div
-                    className="absolute inset-0 rounded-xl"
+                    className="absolute inset-0 rounded-xl animate-spin-slow"
                     style={{
                       background:
-                        "conic-gradient(from 0deg, transparent 0%, rgba(99,102,241,0.5) 25%, transparent 50%, rgba(236,72,153,0.4) 75%, transparent 100%)",
-                      animation: "gradient-pan 12s linear infinite",
+                        "conic-gradient(from 0deg, transparent 0%, rgb(var(--brand) / 0.55) 25%, transparent 50%, rgb(236 72 153 / 0.45) 75%, transparent 100%)",
                     }}
                   />
                 </div>
@@ -255,7 +254,7 @@ export default function Hero() {
                               duration: 0.5,
                               ease: easeOutExpo,
                             }}
-                            className="rounded-lg border border-border-subtle bg-bg-surface/50 p-3.5 text-center transition-all duration-300 hover:border-brand/40 hover:-translate-y-0.5"
+                            className="rounded-lg border border-border-subtle bg-bg-raised p-3.5 text-center transition-all duration-300 hover:border-brand/40 hover:-translate-y-0.5"
                           >
                             <div className="text-3xl md:text-4xl font-extrabold tracking-tight gradient-text-static">
                               <CountUp to={num} decimals={decimals} suffix={suffix} />

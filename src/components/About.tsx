@@ -7,12 +7,13 @@ import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 export default function About() {
   return (
-    <section id="about" className="section">
+    <section id="about" className="section" data-accent="indigo">
       <div className="container-x space-y-16 md:space-y-24">
         <SectionHeading
           eyebrow="01 / About"
           title={config.about.heading}
           watermark="01"
+          accent="indigo"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
