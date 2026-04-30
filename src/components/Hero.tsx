@@ -115,7 +115,7 @@ export default function Hero() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="block font-mono text-[15px] md:text-[17px] font-medium text-fg-muted mb-5 tracking-normal"
               >
-                <span className="text-brand-bright">$</span> hi, I'm
+                <span className="text-brand-bright">$</span> hi, I&apos;m
               </motion.span>
               <span className="block text-fg overflow-hidden">
                 <LetterReveal text={config.personal.firstName} delay={0.3} />
@@ -135,7 +135,7 @@ export default function Hero() {
                 className="mt-9 flex flex-wrap items-center gap-3 text-2xl md:text-3xl font-medium"
               >
                 <Sparkles size={22} className="text-brand-light glow-brand" strokeWidth={2} />
-                <span className="text-fg-muted">I'm a</span>
+                <span className="text-fg-muted">I&apos;m a</span>
                 <span className="relative inline-flex h-10 md:h-12 overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.span
