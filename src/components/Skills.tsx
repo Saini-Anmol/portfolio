@@ -25,7 +25,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="section" data-accent="cyan">
-      <div className="container-x space-y-16 md:space-y-24">
+      <div className="container-x space-y-12 sm:space-y-16 md:space-y-24">
         <SectionHeading
           eyebrow="04 / Skills"
           title="Tools I work with"

@@ -18,7 +18,7 @@ const ACHIEVEMENT_THEMES: { accent: AccentName; Icon: typeof Trophy }[] = [
 export default function Achievements() {
   return (
     <section id="achievements" className="section" data-accent="amber">
-      <div className="container-x space-y-16 md:space-y-24">
+      <div className="container-x space-y-12 sm:space-y-16 md:space-y-24">
         <SectionHeading
           eyebrow="05 / Achievements"
           title="Recognitions"

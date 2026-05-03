@@ -1,12 +1,6 @@
 /**
  * SITE CONFIG — single source of truth.
  * Edit any value here and the entire site updates.
- *
- * Sections you can toggle on/off, reorder, or extend:
- *  - personal, hero, about, experience, projects,
- *    skills, achievements, education, contact, social
- *
- * To rebuild after editing: `npm run dev` (auto-reloads)
  */
 
 export type SocialLink = {
@@ -29,7 +23,7 @@ export type Project = {
   bullets: string[];
   tech: string[];
   links?: { label: string; href: string }[];
-  highlight?: string; // e.g. "Featured"
+  highlight?: string;
 };
 
 export type ExperienceItem = {
@@ -39,6 +33,7 @@ export type ExperienceItem = {
   location?: string;
   bullets: string[];
   tech?: string[];
+  current?: boolean;
 };
 
 export type SkillGroup = {
@@ -73,32 +68,33 @@ export const config = {
     name: "Anmol Saini",
     firstName: "Anmol",
     lastName: "Saini",
-    title: "AI Engineer & Full-Stack Developer",
+    title: "Data Scientist",
+    company: "Algo8 AI",
     tagline:
-      "Mathematics & Computing undergrad building intelligent systems — from LLM-powered security tools to end-to-end ML pipelines.",
-    location: "Amethi, India",
+      "Data Scientist at Algo8 AI building production-grade ML systems.",
+    location: "India",
     email: "anmolsaini87.40@gmail.com",
     secondaryEmail: "22mc3006@rgipt.ac.in",
     phone: "+91 7849979009",
-    resumeUrl: "/resume.pdf", // place your PDF in /public as resume.pdf
-    profileImage: "", // optional: e.g. "/profile.jpg" placed in /public
-    available: true, // shows "Available for opportunities" pill in hero
+    resumeUrl: "/resume.pdf",
+    profileImage: "/profile.jpeg",
+    available: false, // currently working at Algo8 AI
   },
 
   /* -------------------- HERO -------------------- */
   hero: {
     greeting: "Hi, I'm",
     rotatingTitles: [
-      "AI Engineer",
-      "Full-Stack Developer",
-      "ML Researcher",
+      "Data Scientist",
+      "ML Engineer",
+      "AI Builder",
       "Problem Solver",
     ],
     bio:
-      "B.Tech in Mathematics & Computing at RGIPT. I build AI-powered systems — from RAG-based pentesting frameworks to image optimization pipelines and NLP tools. Smart India Hackathon 2024 winner.",
+      "Building production AI systems at Algo8 AI. Previously: PMO India, SIH 2024 Winner. B.Tech Mathematics & Computing, RGIPT.",
     cta: {
-      primary: { label: "View Projects", href: "#projects" },
-      secondary: { label: "Download Resume", href: "/resume.pdf" },
+      primary: { label: "View Work", href: "#projects" },
+      secondary: { label: "Download CV", href: "/resume.pdf" },
     },
     stats: [
       { value: "8.42", label: "CGPA" },
@@ -109,75 +105,83 @@ export const config = {
 
   /* -------------------- ABOUT -------------------- */
   about: {
-    heading: "About Me",
+    heading: "About",
     paragraphs: [
-      "I'm a final-year B.Tech student in Mathematics and Computing at Rajiv Gandhi Institute of Petroleum Technology, with a strong focus on applied AI, machine learning, and full-stack engineering.",
-      "Most recently, I worked as an AI Security Researcher at PMO India, where I built an AI-powered pentesting framework using RAG, FAISS embeddings, and Unsloth-QLoRA fine-tuning for CVE mapping and remediation.",
-      "I enjoy turning research-grade ideas into shipped products — whether that's a content-aware image optimizer, a privacy-focused browser extension, or an LLM-driven analytics pipeline.",
+      "Data Scientist at Algo8 AI, focused on shipping production-grade ML systems. Final-year B.Tech in Mathematics & Computing at RGIPT.",
+      "I enjoy turning research-grade ideas into deployed products — RAG-based pentesting frameworks, image optimization pipelines, and LLM-driven analytics tools.",
     ],
     quickFacts: [
-      { label: "Currently", value: "Final-year B.Tech, RGIPT" },
+      { label: "Currently", value: "Data Scientist · Algo8 AI" },
       { label: "Focus", value: "Applied AI · ML · NLP" },
-      { label: "Looking for", value: "SDE / ML Engineer roles" },
+      { label: "Education", value: "B.Tech, RGIPT (2026)" },
     ],
   },
 
   /* -------------------- EXPERIENCE -------------------- */
   experience: [
     {
+      role: "Data Scientist",
+      org: "Algo8 AI",
+      period: "Present",
+      location: "Remote",
+      current: true,
+      bullets: [
+        "Building production-grade ML systems and data pipelines.",
+        "Working across model development, evaluation, and deployment.",
+      ],
+      tech: ["Python", "ML", "Deep Learning", "MLOps"],
+    },
+    {
       role: "AI Security Researcher",
       org: "PMO India",
-      period: "Jun 2025 – Aug 2025",
+      period: "Jun – Aug 2025",
       location: "Remote",
       bullets: [
-        "Built an AI-powered vulnerability analysis & pentesting framework integrating RAG, FAISS embeddings, and few-shot learning; fine-tuned with Unsloth-QLoRA for CVE mapping and remediation guidance.",
-        "Developed a conversational chatbot for penetration testing queries, attack-chain analysis, and defensive strategies.",
-        "Conducted red-team vulnerability scanning on multiple websites to identify exploitable risks and recommend mitigation measures.",
+        "Built an AI pentesting framework with RAG, FAISS embeddings, and Unsloth-QLoRA fine-tuning for CVE mapping.",
+        "Shipped a conversational chatbot for attack-chain analysis and remediation.",
+        "Ran red-team scans on multiple production websites.",
       ],
-      tech: ["Python", "RAG", "FAISS", "Unsloth", "QLoRA", "LLMs"],
+      tech: ["Python", "RAG", "FAISS", "QLoRA", "LLMs"],
     },
   ] as ExperienceItem[],
 
   /* -------------------- PROJECTS -------------------- */
   projects: [
     {
-      title: "AI-Driven Smart Image Optimization Suite",
-      period: "Apr 2025 – May 2025",
+      title: "Smart Image Optimization Suite",
+      period: "Apr – May 2025",
       summary:
-        "Content-aware image compression engine combining classical ML and deep learning super-resolution.",
+        "Content-aware compression engine with deep super-resolution.",
       bullets: [
-        "Built a compression engine using Random Forest to predict optimal SVD rank and JPEG quality from image entropy — achieving 95% SSIM.",
-        "Implemented smart presets (Passport, Social) and WebP support, reducing file sizes by ~60–80% while preserving perceptual fidelity.",
-        "Integrated FSRCNN deep super-resolution to upscale and restore low-quality images by 2×.",
+        "Random Forest predicts optimal SVD rank + JPEG quality from image entropy — 95% SSIM.",
+        "FSRCNN super-resolution upscales low-quality images 2× — file sizes cut 60–80%.",
       ],
       tech: ["Python", "OpenCV", "Scikit-learn", "TensorFlow", "Streamlit"],
       links: [{ label: "View Project", href: "#" }],
       highlight: "Featured",
     },
     {
-      title: "Dark Pattern Detector (DigiCom)",
-      period: "Jan 2024 – Feb 2024",
+      title: "Dark Pattern Detector",
+      period: "Jan – Feb 2024",
       summary:
-        "Privacy-focused browser extension detecting deceptive UX patterns on e-commerce sites.",
+        "Browser extension flagging deceptive UX on e-commerce sites.",
       bullets: [
-        "Detects dark patterns (false urgency, scarcity, etc.) on live e-commerce pages.",
-        "Fine-tuned DistilBERT on 3,000+ labeled snippets — 93% multi-class accuracy.",
-        "Built a lightweight Flask API for fast inference and dynamic UI highlighting.",
+        "Fine-tuned DistilBERT on 3K+ labeled snippets — 93% multi-class accuracy.",
+        "Lightweight Flask API for real-time inference and DOM highlighting.",
       ],
-      tech: ["PyTorch", "Transformers", "Flask", "JavaScript", "HTML/CSS"],
+      tech: ["PyTorch", "Transformers", "Flask", "JavaScript"],
       links: [{ label: "View Project", href: "#" }],
     },
     {
-      title: "ChatLens: Intelligent Insight Extractor",
-      period: "Jul 2025 – Aug 2025",
+      title: "ChatLens",
+      period: "Jul – Aug 2025",
       summary:
-        "Pipeline that turns multilingual chat exports into stakeholder-ready insight summaries.",
+        "Multilingual chat-export → stakeholder insights pipeline.",
       bullets: [
-        "Parses multilingual chat exports, translates to English, and prioritizes messages via keyword scoring.",
-        "Uses Google T5 for threshold-based summarization to extract key insights and reduce noise.",
-        "Generates structured frequency logs and produces both an HTML stakeholder summary and a JSON debug file.",
+        "Translates and prioritizes messages via keyword scoring; T5 for threshold summarization.",
+        "Outputs HTML stakeholder summary + JSON debug log via Flask API.",
       ],
-      tech: ["Python", "Flask", "T5", "Google Translate API", "BeautifulSoup"],
+      tech: ["Python", "Flask", "T5", "Translate API"],
       links: [{ label: "View Project", href: "#" }],
     },
   ] as Project[],
@@ -190,35 +194,27 @@ export const config = {
     },
     {
       category: "Backend & Web",
-      items: ["Node.js", "Express.js", "React.js", "Next.js", "REST APIs", "Flask"],
+      items: ["Node.js", "Express", "React", "Next.js", "Flask", "REST"],
     },
     {
       category: "Databases",
-      items: ["MySQL", "PostgreSQL", "MongoDB", "Query Optimization"],
+      items: ["MySQL", "PostgreSQL", "MongoDB"],
     },
     {
       category: "Data Science & AI",
-      items: ["Pandas", "NumPy", "SciPy", "Scikit-learn", "PyTorch", "TensorFlow", "CNNs", "RNNs"],
+      items: ["Pandas", "NumPy", "Scikit-learn", "PyTorch", "TensorFlow"],
     },
     {
       category: "NLP & LLMs",
-      items: [
-        "Hugging Face Transformers",
-        "BERT / GPT",
-        "LangChain",
-        "LlamaIndex",
-        "RAG",
-        "SpaCy",
-        "NLTK",
-      ],
+      items: ["Transformers", "LangChain", "LlamaIndex", "RAG", "SpaCy"],
     },
     {
-      category: "Deployment & Tools",
-      items: ["Git/GitHub", "AWS EC2", "MLflow", "Streamlit", "Hugging Face Spaces", "Docker"],
+      category: "Deployment",
+      items: ["Git", "AWS EC2", "MLflow", "Docker", "HF Spaces"],
     },
     {
       category: "Fundamentals",
-      items: ["DSA", "OOP", "System Design", "Time/Space Complexity"],
+      items: ["DSA", "OOP", "System Design"],
     },
   ] as SkillGroup[],
 
@@ -226,25 +222,25 @@ export const config = {
   achievements: [
     {
       title: "Smart India Hackathon 2024 — Winner",
-      detail: "Winner among 71 participating teams from across India.",
+      detail: "Among 71 teams across India.",
       date: "2024",
       href: "#",
     },
     {
       title: "DPBH '23 Finalist — IIT BHU",
-      detail: "Finalist at DPBH 2023 organized by Ministry of Consumer Affairs, GOI.",
+      detail: "Ministry of Consumer Affairs, GOI.",
       date: "2023",
       href: "#",
     },
     {
       title: "RBI90 Quiz — State Finalist",
-      detail: "State Finalist of the RBI90 Quiz Competition organized by RBI.",
+      detail: "Reserve Bank of India.",
       date: "2023",
       href: "#",
     },
     {
-      title: "IIT JEE Advanced Qualified",
-      detail: "Qualified IIT JEE Advanced 2022.",
+      title: "IIT JEE Advanced — Qualified",
+      detail: "AIR-bracket qualifier.",
       date: "2022",
     },
   ] as Achievement[],
@@ -252,16 +248,16 @@ export const config = {
   /* -------------------- EDUCATION -------------------- */
   education: [
     {
-      degree: "B.Tech in Mathematics and Computing",
-      institution: "Rajiv Gandhi Institute of Petroleum Technology",
+      degree: "B.Tech, Mathematics & Computing",
+      institution: "RGIPT",
       location: "Jais, Amethi",
       period: "2022 – 2026",
       score: "CGPA: 8.42 / 10",
     },
     {
-      degree: "Senior Secondary (CBSE)",
-      institution: "UCSKM Public School, Bhiwadi",
-      location: "Rajasthan",
+      degree: "Senior Secondary",
+      institution: "UCSKM Public School",
+      location: "Bhiwadi, Rajasthan",
       period: "2019 – 2021",
       score: "94.4% (XII) · 87.4% (X)",
     },
@@ -272,24 +268,22 @@ export const config = {
     {
       title: "Head & Mentor (Chemistry)",
       org: "Gyanarpan Project, Amethi",
-      detail:
-        "Led 150 volunteers; taught Math & Chemistry to underprivileged Class 11–12 students; conducted 80+ classes.",
+      detail: "Led 150 volunteers; 80+ classes for underprivileged students.",
     },
     {
       title: "Teaching Assistant",
       org: "RGIPT",
-      detail:
-        "Assisted 1st & 2nd-year students in Fundamentals of Electronics Engineering & Engineering Thermodynamics.",
+      detail: "Electronics Engineering & Thermodynamics.",
     },
     {
       title: "R&D Executive",
-      org: "Astronomy Club — Science & Tech Council, RGIPT",
-      detail: "Drove research initiatives within the Astronomy Club.",
+      org: "Astronomy Club, RGIPT",
+      detail: "Research initiatives in Sci & Tech Council.",
     },
     {
-      title: "Event Management Executive",
+      title: "Event Management",
       org: "OWASP RGIPT",
-      detail: "Organized cybersecurity events and workshops.",
+      detail: "Cybersecurity events & workshops.",
     },
   ] as RoleItem[],
 
@@ -314,23 +308,23 @@ export const config = {
   /* -------------------- META / SEO -------------------- */
   meta: {
     siteUrl: "https://anmolsaini.vercel.app",
-    title: "Anmol Saini — AI Engineer & Full-Stack Developer",
+    title: "Anmol Saini — Data Scientist & ML Engineer",
     description:
-      "Portfolio of Anmol Saini — Mathematics & Computing undergrad at RGIPT building AI systems, ML pipelines, and full-stack apps.",
+      "Data Scientist at Algo8 AI building production-grade ML systems. SIH 2024 winner. B.Tech Math & Computing, RGIPT.",
     keywords: [
       "Anmol Saini",
       "Portfolio",
-      "AI Engineer",
+      "Data Scientist",
       "Machine Learning",
-      "Full Stack Developer",
+      "Algo8 AI",
       "RGIPT",
     ],
-    ogImage: "/og.png", // optional
+    ogImage: "/og.png",
   },
 
   /* -------------------- THEME (cosmetic toggles) -------------------- */
   theme: {
-    accent: "violet", // visual accent — currently informational; colors live in tailwind.config
+    accent: "violet",
     showRotatingTitle: true,
     showStats: true,
     showQuickFacts: true,

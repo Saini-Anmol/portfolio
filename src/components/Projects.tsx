@@ -7,17 +7,16 @@ import Spotlight from "./Spotlight";
 import { config } from "@/data/config";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
-// Each project card gets its own color theme
 const PROJECT_ACCENTS: AccentName[] = ["cyan", "rose", "violet"];
 
 export default function Projects() {
   return (
     <section id="projects" className="section" data-accent="pink">
-      <div className="container-x space-y-16 md:space-y-24">
+      <div className="container-x space-y-12 sm:space-y-16 md:space-y-24">
         <SectionHeading
           eyebrow="03 / Projects"
           title="Selected work"
-          description="A mix of applied AI, NLP, and full-stack systems I've shipped — from research prototypes to deployable products."
+          description="A mix of applied AI, NLP, and full-stack systems — research prototypes shipped as products."
           watermark="03"
           accent="pink"
         />
@@ -27,7 +26,7 @@ export default function Projects() {
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8"
         >
           {config.projects.map((p, idx) => {
             const primaryLink = p.links?.[0];
@@ -45,7 +44,6 @@ export default function Projects() {
                   tiltIntensity={4}
                   className="card-pad group/card flex flex-col h-full"
                 >
-                  {/* Decorative corner gradient */}
                   <div
                     aria-hidden
                     className="pointer-events-none absolute -top-px -right-px h-32 w-32 rounded-bl-[80px] opacity-80"
@@ -59,15 +57,15 @@ export default function Projects() {
                     <header className="flex items-start justify-between gap-3">
                       <div className="min-w-0 flex-1">
                         {p.highlight && (
-                          <span className="chip-brand mb-4">
+                          <span className="chip-brand mb-3 sm:mb-4">
                             <Sparkles size={11} className="mr-1.5" strokeWidth={2} />
                             {p.highlight}
                           </span>
                         )}
-                        <h3 className="text-h2 font-bold text-fg leading-tight transition-colors duration-300 group-hover/card:text-accent">
+                        <h3 className="text-[19px] sm:text-h2 font-bold text-fg leading-tight transition-colors duration-300 group-hover/card:text-accent">
                           {p.title}
                         </h3>
-                        <p className="mt-3 font-mono text-[12px] uppercase tracking-[0.18em] text-fg-subtle">
+                        <p className="mt-2 sm:mt-3 font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-fg-subtle">
                           {p.period}
                         </p>
                       </div>
@@ -77,13 +75,10 @@ export default function Projects() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={primaryLink.label}
-                          className="icon-btn shrink-0 group-hover/card:border-accent group-hover/card:text-accent"
-                          style={{
-                            ["--hover-border" as never]: "rgb(var(--accent-rgb))",
-                          }}
+                          className="icon-btn shrink-0"
                         >
                           <ArrowUpRight
-                            size={17}
+                            size={16}
                             strokeWidth={2}
                             className="transition-transform duration-300 ease-out-expo group-hover/card:rotate-45"
                           />
@@ -91,15 +86,15 @@ export default function Projects() {
                       )}
                     </header>
 
-                    <p className="mt-6 text-[16px] md:text-[17px] text-fg leading-[1.65] text-pretty">
+                    <p className="mt-4 sm:mt-5 text-[15px] sm:text-[16px] md:text-[17px] text-fg leading-[1.6] text-pretty">
                       {p.summary}
                     </p>
 
-                    <ul className="mt-5 space-y-3 flex-1">
+                    <ul className="mt-4 space-y-2 sm:space-y-2.5 flex-1">
                       {p.bullets.map((b, i) => (
                         <li
                           key={i}
-                          className="flex gap-3 text-[14.5px] text-fg-muted leading-[1.7] text-pretty"
+                          className="flex gap-2.5 text-[13.5px] sm:text-[14.5px] text-fg-muted leading-[1.65] text-pretty"
                         >
                           <span className="bullet" />
                           <span>{b}</span>
@@ -107,7 +102,7 @@ export default function Projects() {
                       ))}
                     </ul>
 
-                    <div className="mt-7 flex flex-wrap gap-1.5 pt-6 border-t border-border-subtle">
+                    <div className="mt-5 sm:mt-6 flex flex-wrap gap-1.5 pt-5 sm:pt-6 border-t border-border-subtle">
                       {p.tech.map((t) => (
                         <span key={t} className="chip">
                           {t}

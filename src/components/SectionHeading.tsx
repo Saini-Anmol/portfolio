@@ -62,8 +62,28 @@ export default function SectionHeading({
         className={`relative flex flex-col max-w-2xl ${alignClasses}`}
       >
         <span className="eyebrow">{eyebrow}</span>
-        <h2 className="display-md mt-6 text-fg text-balance">{title}</h2>
-        {description && <p className="lead mt-6 text-balance">{description}</p>}
+        <h2 className="display-md mt-5 sm:mt-6 text-fg text-balance">{title}</h2>
+
+        {/* Animated gradient underline */}
+        <motion.span
+          aria-hidden
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+          className={`mt-4 sm:mt-5 block h-[2px] w-20 sm:w-24 rounded-full ${
+            align === "center" ? "" : "origin-left"
+          }`}
+          style={{
+            background: `linear-gradient(90deg, rgb(var(--accent-rgb)), rgb(var(--accent-rgb) / 0.2))`,
+            transformOrigin: align === "center" ? "center" : "left",
+            boxShadow: "0 0 12px 0 rgb(var(--accent-rgb) / 0.5)",
+          }}
+        />
+
+        {description && (
+          <p className="lead mt-5 sm:mt-6 text-balance">{description}</p>
+        )}
       </motion.header>
     </div>
   );

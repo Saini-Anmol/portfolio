@@ -21,11 +21,11 @@ export default function Contact() {
         <div className="absolute bottom-0 left-1/3 h-60 w-[30rem] rounded-full bg-accent-pink/12 blur-[120px]" />
       </div>
 
-      <div className="container-x space-y-16 md:space-y-24">
+      <div className="container-x space-y-12 sm:space-y-16 md:space-y-24">
         <SectionHeading
           eyebrow="07 / Contact"
           title="Let's build something"
-          description="I'm currently open to internships, full-time roles, and interesting collaborations. The fastest way to reach me is email."
+          description="Open to interesting collaborations, talks, and tech conversations. Email is the fastest way to reach me."
           align="center"
           watermark="07"
           accent="indigo"
@@ -38,7 +38,7 @@ export default function Contact() {
           transition={{ duration: 0.7, ease: easeOutExpo }}
           className="mx-auto max-w-3xl"
         >
-          <div className="card-glass relative overflow-hidden p-10 md:p-16 text-center">
+          <div className="card-glass relative overflow-hidden p-7 sm:p-10 md:p-16 text-center">
             <div className="pointer-events-none absolute inset-0 dot-pattern opacity-50" />
             {/* Animated gradient ring */}
             <div className="pointer-events-none absolute -inset-px rounded-xl opacity-60">

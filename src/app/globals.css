@@ -206,7 +206,7 @@ button { font-family: inherit; cursor: pointer; }
   }
 
   .section {
-    @apply py-24 md:py-32 scroll-mt-24 relative;
+    @apply py-16 sm:py-24 md:py-32 scroll-mt-24 relative;
   }
 
   .section-tight {
@@ -299,10 +299,12 @@ button { font-family: inherit; cursor: pointer; }
 
   /* Section watermark number — picks up section accent */
   .section-watermark {
-    @apply pointer-events-none absolute -top-6 right-0 select-none font-extrabold text-watermark;
+    @apply pointer-events-none absolute -top-4 sm:-top-6 right-0 select-none font-extrabold text-watermark;
     line-height: 0.85;
     color: transparent;
     -webkit-text-stroke: 1.5px rgb(var(--accent-rgb) / var(--stroke-opacity));
+    max-width: 60%;
+    overflow: hidden;
   }
 
   /* ───── Colorful icon orb (used in achievements, education, etc.) ───── */

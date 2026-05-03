@@ -60,7 +60,7 @@ const config: Config = {
         "h3": ["clamp(1.125rem, 1.6vw, 1.375rem)", { lineHeight: "1.3", letterSpacing: "-0.012em" }],
         "lead": ["clamp(1.0625rem, 1.5vw, 1.25rem)", { lineHeight: "1.65", letterSpacing: "-0.005em" }],
         "body": ["clamp(0.9375rem, 1.05vw, 1.0625rem)", { lineHeight: "1.7" }],
-        "watermark": ["clamp(7rem, 18vw, 18rem)", { lineHeight: "0.85", letterSpacing: "-0.06em" }],
+        "watermark": ["clamp(4.5rem, 16vw, 18rem)", { lineHeight: "0.85", letterSpacing: "-0.06em" }],
       },
       borderRadius: {
         sm: "6px",

@@ -88,7 +88,7 @@ export default function Education() {
 
   return (
     <section id="education" className="section" data-accent="violet">
-      <div className="container-x space-y-16 md:space-y-24">
+      <div className="container-x space-y-12 sm:space-y-16 md:space-y-24">
         <SectionHeading
           eyebrow="06 / Education"
           title="Education & roles"
