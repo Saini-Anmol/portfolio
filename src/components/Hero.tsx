@@ -87,7 +87,7 @@ export default function Hero() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 lg:gap-20 items-center"
         >
           {/* RIGHT (visible first on mobile via order) — Profile */}
-          <div className="order-1 lg:order-2 lg:col-span-5 max-w-[20rem] sm:max-w-sm mx-auto lg:max-w-none">
+          <div className="order-1 lg:order-2 lg:col-span-5 max-w-[22rem] sm:max-w-md mx-auto lg:max-w-none">
             <ProfileCard />
           </div>
 

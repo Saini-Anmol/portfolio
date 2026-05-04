@@ -97,9 +97,9 @@ export const config = {
       secondary: { label: "Download CV", href: "/resume.pdf" },
     },
     stats: [
-      { value: "8.42", label: "CGPA" },
       { value: "10+", label: "Projects" },
-      { value: "1", label: "SIH Win" },
+      { value: "20+", label: "Tech Stack" },
+      { value: "4", label: "Awards" },
     ],
   },
 

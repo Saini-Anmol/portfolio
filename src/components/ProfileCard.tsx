@@ -37,7 +37,7 @@ export default function ProfileCard() {
         </div>
 
         {/* Card */}
-        <div className="relative card-glass card-pad overflow-hidden">
+        <div className="relative card-glass p-7 md:p-9 overflow-hidden">
           {/* Animated conic ring at the very edge */}
           <div className="pointer-events-none absolute -inset-px rounded-xl opacity-60">
             <div
@@ -88,26 +88,26 @@ export default function ProfileCard() {
                   }}
                 />
                 {/* Photo mask */}
-                <div className="relative h-32 w-32 sm:h-36 sm:w-36 overflow-hidden rounded-full border-[3px] border-bg-card shadow-[0_8px_32px_-4px_rgba(99,102,241,0.5)]">
+                <div className="relative h-44 w-44 sm:h-52 sm:w-52 overflow-hidden rounded-full border-[3px] border-bg-card shadow-[0_10px_40px_-6px_rgba(99,102,241,0.55)]">
                   {config.personal.profileImage ? (
                     <Image
                       src={config.personal.profileImage}
                       alt={config.personal.name}
                       fill
-                      sizes="144px"
+                      sizes="208px"
                       className="object-cover"
                       priority
                     />
                   ) : (
                     <div className="absolute inset-0 grid place-items-center bg-bg-raised">
-                      <span className="text-4xl font-bold text-fg-subtle">
+                      <span className="text-5xl font-bold text-fg-subtle">
                         {config.personal.firstName[0]}
                       </span>
                     </div>
                   )}
                 </div>
                 {/* Online dot */}
-                <span className="absolute right-1 bottom-1 inline-flex h-4 w-4 items-center justify-center rounded-full border-2 border-bg-card bg-accent-emerald shadow-[0_0_10px_rgba(16,185,129,0.7)]">
+                <span className="absolute right-2 bottom-2 inline-flex h-5 w-5 items-center justify-center rounded-full border-2 border-bg-card bg-accent-emerald shadow-[0_0_12px_rgba(16,185,129,0.7)]">
                   <span className="absolute inset-0 rounded-full bg-accent-emerald animate-pulse-ring" />
                 </span>
               </div>
