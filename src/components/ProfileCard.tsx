@@ -24,13 +24,13 @@ export default function ProfileCard() {
       className="lg:col-span-5"
     >
       <div className="relative">
-        {/* Outer rotating gradient halo */}
-        <div className="pointer-events-none absolute -inset-3 sm:-inset-4 rounded-[28px] opacity-70">
+        {/* Outer rotating gradient halo — controlled blue→cyan */}
+        <div className="pointer-events-none absolute -inset-3 sm:-inset-4 rounded-[28px] opacity-65">
           <div
             className="absolute inset-0 rounded-[28px] animate-spin-slow"
             style={{
               background:
-                "conic-gradient(from 0deg, #06b6d4, #6366f1, #ec4899, #f59e0b, #10b981, #06b6d4)",
+                "conic-gradient(from 0deg, #2563eb, #0ea5e9, #06b6d4, #14b8a6, #2563eb)",
               filter: "blur(28px)",
             }}
           />
@@ -39,12 +39,12 @@ export default function ProfileCard() {
         {/* Card */}
         <div className="relative card-glass p-7 md:p-9 overflow-hidden">
           {/* Animated conic ring at the very edge */}
-          <div className="pointer-events-none absolute -inset-px rounded-xl opacity-60">
+          <div className="pointer-events-none absolute -inset-px rounded-xl opacity-50">
             <div
               className="absolute inset-0 rounded-xl animate-spin-slow"
               style={{
                 background:
-                  "conic-gradient(from 0deg, transparent 0%, rgb(var(--brand) / 0.55) 25%, transparent 50%, #ec4899 75%, transparent 100%)",
+                  "conic-gradient(from 0deg, transparent 0%, rgb(var(--brand) / 0.5) 25%, transparent 50%, #06b6d4 75%, transparent 100%)",
                 animationDuration: "16s",
               }}
             />
@@ -54,8 +54,8 @@ export default function ProfileCard() {
             {/* Header */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-accent-pink/70" />
-                <span className="h-2.5 w-2.5 rounded-full bg-accent-amber/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-accent-blue/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-accent-cyan/70" />
                 <span className="h-2.5 w-2.5 rounded-full bg-accent-emerald/70" />
               </div>
               <span className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-fg-subtle">
@@ -66,14 +66,14 @@ export default function ProfileCard() {
             {/* Profile photo with animated multi-color rings */}
             <div className="mt-7 flex flex-col items-center">
               <div className="relative">
-                {/* Outermost rotating gradient ring */}
+                {/* Outermost rotating gradient ring — blue→cyan→teal */}
                 <span
                   aria-hidden
                   className="absolute -inset-2 rounded-full animate-spin-slow"
                   style={{
                     background:
-                      "conic-gradient(from 90deg, #06b6d4 0%, #6366f1 25%, #8b5cf6 50%, #ec4899 75%, #f59e0b 100%)",
-                    animationDuration: "8s",
+                      "conic-gradient(from 90deg, #2563eb 0%, #0ea5e9 30%, #06b6d4 55%, #14b8a6 80%, #2563eb 100%)",
+                    animationDuration: "9s",
                   }}
                 />
                 {/* Inner ring (counter-rotation) */}
@@ -88,7 +88,7 @@ export default function ProfileCard() {
                   }}
                 />
                 {/* Photo mask */}
-                <div className="relative h-44 w-44 sm:h-52 sm:w-52 overflow-hidden rounded-full border-[3px] border-bg-card shadow-[0_10px_40px_-6px_rgba(99,102,241,0.55)]">
+                <div className="relative h-44 w-44 sm:h-52 sm:w-52 overflow-hidden rounded-full border-[3px] border-bg-card shadow-[0_10px_40px_-6px_rgba(37,99,235,0.5)]">
                   {config.personal.profileImage ? (
                     <Image
                       src={config.personal.profileImage}
@@ -152,10 +152,10 @@ export default function ProfileCard() {
                     style={{
                       ["--accent-rgb" as never]:
                         i === 0
-                          ? "6 182 212"
+                          ? "2 132 199"   /* Projects — sky */
                           : i === 1
-                          ? "139 92 246"
-                          : "245 158 11",
+                          ? "8 145 178"   /* Tech Stack — cyan */
+                          : "202 138 4",  /* Awards — amber (gold) */
                     }}
                   >
                     <div

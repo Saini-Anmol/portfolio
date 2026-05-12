@@ -19,7 +19,7 @@ export default function Footer() {
             </p>
             <p className="font-mono text-[11px] text-fg-subtle inline-flex items-center gap-1.5">
               Designed & built with
-              <Heart size={11} className="text-accent-pink fill-accent-pink" />
+              <Heart size={11} className="text-accent-cyan fill-accent-cyan" />
               using Next.js + Tailwind
             </p>
           </div>

@@ -4,8 +4,8 @@ import { useMemo } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 /**
- * Site-wide colorful ambient background.
- * Five gradient orbs in distinct hues, parallax with scroll, slow drifting.
+ * Site-wide ambient background — a cohesive blue / cyan / sky / teal palette.
+ * Soft gradient orbs, parallax with scroll, slow drifting.
  */
 export default function AmbientBackground() {
   const { scrollY } = useScroll();
@@ -31,13 +31,13 @@ export default function AmbientBackground() {
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-40 overflow-hidden"
     >
-      {/* Top aurora beam */}
+      {/* Top aurora beam — blue → sky → cyan */}
       <div className="absolute inset-x-0 top-0 h-[2px] overflow-hidden">
         <div
           className="absolute inset-y-0 w-[160%] -left-1/3 animate-aurora-pan"
           style={{
             background:
-              "linear-gradient(90deg, transparent 0%, #06b6d4 20%, #6366f1 40%, #ec4899 60%, #f59e0b 80%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, #2563eb 25%, #0ea5e9 50%, #06b6d4 75%, transparent 100%)",
             filter: "blur(0.5px)",
           }}
         />
@@ -45,14 +45,14 @@ export default function AmbientBackground() {
 
       {/* Aurora glow under the beam */}
       <div
-        className="absolute inset-x-0 top-0 h-40 opacity-70"
+        className="absolute inset-x-0 top-0 h-40 opacity-65"
         style={{
           background:
-            "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(99,102,241,0.20), transparent 70%)",
+            "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(37,99,235,0.18), transparent 70%)",
         }}
       />
 
-      {/* 5 colorful floating orbs */}
+      {/* Floating gradient orbs — blue / cyan / sky / teal family */}
       <motion.div
         style={{ y: y1 }}
         className="absolute top-[10%] -left-[10%] h-[34rem] w-[34rem] rounded-full blur-[130px] animate-float-slow"
@@ -61,7 +61,7 @@ export default function AmbientBackground() {
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%)",
+              "radial-gradient(circle, rgba(37, 99, 235, 0.30), transparent 70%)",
           }}
         />
       </motion.div>
@@ -74,7 +74,7 @@ export default function AmbientBackground() {
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(236, 72, 153, 0.22), transparent 70%)",
+              "radial-gradient(circle, rgba(6, 182, 212, 0.22), transparent 70%)",
           }}
         />
       </motion.div>
@@ -87,7 +87,7 @@ export default function AmbientBackground() {
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(6, 182, 212, 0.22), transparent 70%)",
+              "radial-gradient(circle, rgba(14, 165, 233, 0.20), transparent 70%)",
           }}
         />
       </motion.div>
@@ -100,7 +100,7 @@ export default function AmbientBackground() {
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(16, 185, 129, 0.18), transparent 70%)",
+              "radial-gradient(circle, rgba(20, 184, 166, 0.16), transparent 70%)",
           }}
         />
       </motion.div>
@@ -113,7 +113,7 @@ export default function AmbientBackground() {
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(245, 158, 11, 0.16), transparent 70%)",
+              "radial-gradient(circle, rgba(99, 102, 241, 0.16), transparent 70%)",
           }}
         />
       </motion.div>
@@ -126,7 +126,7 @@ export default function AmbientBackground() {
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(139, 92, 246, 0.20), transparent 70%)",
+              "radial-gradient(circle, rgba(37, 99, 235, 0.16), transparent 70%)",
           }}
         />
       </motion.div>

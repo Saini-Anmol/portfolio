@@ -61,7 +61,7 @@ export default function Hero() {
       {/* Layered ambient backdrops */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute top-1/4 left-1/4 h-[24rem] w-[24rem] sm:h-[32rem] sm:w-[32rem] -translate-x-1/2 rounded-full bg-brand/30 blur-[120px] animate-float" />
-        <div className="absolute bottom-1/4 right-0 h-[20rem] w-[20rem] sm:h-[28rem] sm:w-[28rem] rounded-full bg-accent-pink/12 blur-[120px] animate-float [animation-delay:-6s]" />
+        <div className="absolute bottom-1/4 right-0 h-[20rem] w-[20rem] sm:h-[28rem] sm:w-[28rem] rounded-full bg-accent-sky/14 blur-[120px] animate-float [animation-delay:-6s]" />
         <div className="absolute top-1/2 right-1/4 h-[16rem] w-[16rem] sm:h-[20rem] sm:w-[20rem] rounded-full bg-accent-cyan/12 blur-[100px] animate-float [animation-delay:-3s]" />
       </div>
       <div className="absolute inset-0 -z-10 grid-pattern mask-radial opacity-40" />

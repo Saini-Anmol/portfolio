@@ -4,15 +4,17 @@ import { motion } from "framer-motion";
 import { fadeUp, viewportOnce } from "@/lib/motion";
 
 export type AccentName =
+  | "blue"
   | "indigo"
-  | "cyan"
-  | "emerald"
-  | "amber"
-  | "pink"
-  | "violet"
-  | "rose"
   | "sky"
+  | "cyan"
   | "teal"
+  | "emerald"
+  | "violet"
+  | "amber"
+  // legacy aliases (remapped onto cool tones in CSS)
+  | "pink"
+  | "rose"
   | "orange"
   | "fuchsia"
   | "lime";

@@ -37,7 +37,7 @@ export default function Contact() {
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -top-32 left-1/4 h-80 w-[36rem] rounded-full bg-accent-cyan/14 blur-[140px]" />
         <div className="absolute -top-32 right-1/4 h-80 w-[36rem] rounded-full bg-brand/18 blur-[140px]" />
-        <div className="absolute bottom-0 left-1/3 h-60 w-[30rem] rounded-full bg-accent-pink/12 blur-[120px]" />
+        <div className="absolute bottom-0 left-1/3 h-60 w-[30rem] rounded-full bg-accent-teal/12 blur-[120px]" />
       </div>
 
       <div className="container-x space-y-12 sm:space-y-16 md:space-y-24">
@@ -65,7 +65,7 @@ export default function Contact() {
                 className="absolute inset-0 rounded-xl animate-spin-slow [animation-duration:18s]"
                 style={{
                   background:
-                    "conic-gradient(from 0deg, transparent 0%, rgb(var(--brand) / 0.55) 25%, transparent 50%, rgb(236 72 153 / 0.45) 75%, transparent 100%)",
+                    "conic-gradient(from 0deg, transparent 0%, rgb(var(--brand) / 0.5) 25%, transparent 50%, rgb(6 182 212 / 0.4) 75%, transparent 100%)",
                 }}
               />
             </div>

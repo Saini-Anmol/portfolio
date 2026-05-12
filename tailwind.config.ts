@@ -33,17 +33,19 @@ const config: Config = {
           on: "rgb(var(--brand-on) / <alpha-value>)",
         },
         accent: {
-          pink: "#ec4899",
-          cyan: "#06b6d4",
-          emerald: "#10b981",
-          amber: "#f59e0b",
-          violet: "#8b5cf6",
-          rose: "#f43f5e",
+          blue: "#2563eb",
           sky: "#0ea5e9",
+          cyan: "#06b6d4",
           teal: "#14b8a6",
-          orange: "#f97316",
-          lime: "#84cc16",
-          fuchsia: "#d946ef",
+          emerald: "#10b981",
+          violet: "#6366f1",
+          amber: "#f59e0b",
+          /* legacy aliases remapped onto cool tones */
+          pink: "#0ea5e9",
+          rose: "#14b8a6",
+          orange: "#f59e0b",
+          lime: "#10b981",
+          fuchsia: "#6366f1",
         },
       },
       fontFamily: {
@@ -81,11 +83,11 @@ const config: Config = {
       },
       backgroundImage: {
         "brand-gradient":
-          "linear-gradient(135deg, #06b6d4 0%, #6366f1 35%, #8b5cf6 65%, #ec4899 100%)",
+          "linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%)",
         "brand-gradient-soft":
-          "linear-gradient(135deg, rgba(6,182,212,0.10), rgba(99,102,241,0.10) 50%, rgba(236,72,153,0.08))",
+          "linear-gradient(135deg, rgba(37,99,235,0.10), rgba(14,165,233,0.10) 50%, rgba(6,182,212,0.08))",
         "rainbow":
-          "linear-gradient(110deg, #06b6d4 0%, #6366f1 25%, #8b5cf6 50%, #ec4899 75%, #f59e0b 100%)",
+          "linear-gradient(110deg, #2563eb 0%, #0ea5e9 40%, #06b6d4 70%, #14b8a6 100%)",
         "shine":
           "linear-gradient(110deg, transparent 30%, rgb(var(--fg) / 0.08) 50%, transparent 70%)",
       },

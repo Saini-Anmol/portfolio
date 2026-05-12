@@ -7,21 +7,32 @@ import Marquee from "./Marquee";
 import { config } from "@/data/config";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
-// Each skill category gets its own color theme — vibrant but cohesive
+// Cohesive cool palette per category (one warm note avoided — reserved for Awards)
 const CATEGORY_ACCENTS: AccentName[] = [
   "sky",      // Programming
   "emerald",  // Backend & Web
-  "amber",    // Databases
-  "pink",     // Data Science & AI
+  "teal",     // Databases
+  "blue",     // Data Science & AI
   "violet",   // NLP & LLMs
-  "cyan",     // Deployment & Tools
-  "rose",     // Fundamentals
+  "cyan",     // Deployment
+  "teal",     // Fundamentals
 ];
 
+// Bento column-spans on the lg 6-col grid (each row sums to 6)
+const CATEGORY_SPANS = [
+  "lg:col-span-2", // Programming
+  "lg:col-span-2", // Backend & Web
+  "lg:col-span-2", // Databases
+  "lg:col-span-3", // Data Science & AI  ← wider (hero category)
+  "lg:col-span-3", // NLP & LLMs         ← wider
+  "lg:col-span-4", // Deployment         ← widest
+  "lg:col-span-2", // Fundamentals
+];
+
+const MARQUEE_ACCENTS: AccentName[] = ["blue", "sky", "cyan", "teal", "violet"];
+
 export default function Skills() {
-  const allSkills = Array.from(
-    new Set(config.skills.flatMap((g) => g.items))
-  );
+  const allSkills = Array.from(new Set(config.skills.flatMap((g) => g.items)));
 
   return (
     <section id="skills" className="section" data-accent="cyan">
@@ -34,7 +45,7 @@ export default function Skills() {
           accent="cyan"
         />
 
-        {/* Animated marquee of every tech */}
+        {/* Marquee strip of every tech */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -42,82 +53,75 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="-mx-[var(--container-pad)] md:mx-0"
         >
-          <div className="relative rounded-none md:rounded-2xl border-y md:border border-border bg-bg-card shadow-card py-5 md:py-6 overflow-hidden">
+          <div className="relative overflow-hidden rounded-none border-y bg-bg-card py-5 shadow-card md:rounded-2xl md:border md:py-6 border-border">
             <Marquee speed={45}>
-              {allSkills.map((s, i) => {
-                const accent = CATEGORY_ACCENTS[i % CATEGORY_ACCENTS.length];
-                return (
+              {allSkills.map((s, i) => (
+                <span
+                  key={s}
+                  data-accent={MARQUEE_ACCENTS[i % MARQUEE_ACCENTS.length]}
+                  className="inline-flex items-center whitespace-nowrap rounded-pill border bg-bg-raised px-4 py-2 text-[13.5px] font-medium text-fg transition-all duration-300 hover:-translate-y-0.5"
+                  style={{ borderColor: "rgb(var(--accent-rgb) / 0.30)" }}
+                >
                   <span
-                    key={s}
-                    data-accent={accent}
-                    className="inline-flex items-center rounded-pill border bg-bg-raised px-4 py-2 text-[13.5px] font-medium text-fg whitespace-nowrap transition-all duration-300 hover:-translate-y-0.5"
+                    className="mr-2 h-1.5 w-1.5 rounded-full"
                     style={{
-                      borderColor: "rgb(var(--accent-rgb) / 0.30)",
+                      background: "rgb(var(--accent-rgb))",
+                      boxShadow: "0 0 6px 0 rgb(var(--accent-rgb) / 0.7)",
                     }}
-                  >
-                    <span
-                      className="mr-2 h-1.5 w-1.5 rounded-full"
-                      style={{
-                        background: "rgb(var(--accent-rgb))",
-                        boxShadow: "0 0 6px 0 rgb(var(--accent-rgb) / 0.7)",
-                      }}
-                    />
-                    {s}
-                  </span>
-                );
-              })}
+                  />
+                  {s}
+                </span>
+              ))}
             </Marquee>
           </div>
         </motion.div>
 
-        {/* Categorized cards — each gets its own accent color */}
+        {/* Bento grid of categories — mixed-width cells */}
         <motion.div
           variants={stagger(0, 0.07)}
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6"
         >
-          {config.skills.map((group, idx) => {
-            const accent = CATEGORY_ACCENTS[idx % CATEGORY_ACCENTS.length];
-            return (
-              <motion.div
-                key={group.category}
-                variants={fadeUp}
-                data-accent={accent}
-              >
-                <Spotlight as="div" className="card-pad h-full">
-                  {/* Top accent strip */}
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-x-0 top-0 h-px"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, transparent, rgb(var(--accent-rgb) / 0.6), transparent)",
-                    }}
-                  />
-                  <div className="relative z-[1]">
-                    <div className="flex items-center justify-between">
-                      <h3 className="eyebrow">{group.category}</h3>
-                      <span
-                        className="font-mono text-[10.5px] font-semibold"
-                        style={{ color: "rgb(var(--accent-rgb) / 0.5)" }}
-                      >
-                        0{idx + 1}
-                      </span>
-                    </div>
-                    <div className="mt-6 flex flex-wrap gap-1.5">
-                      {group.items.map((item) => (
-                        <span key={item} className="chip">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
+          {config.skills.map((group, idx) => (
+            <motion.div
+              key={group.category}
+              variants={fadeUp}
+              data-accent={CATEGORY_ACCENTS[idx % CATEGORY_ACCENTS.length]}
+              className={CATEGORY_SPANS[idx] ?? "lg:col-span-2"}
+            >
+              <Spotlight as="div" className="h-full rounded-[18px] p-6 md:p-7">
+                {/* Top accent strip */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, transparent, rgb(var(--accent-rgb) / 0.6), transparent)",
+                  }}
+                />
+                <div className="relative z-[1] flex h-full flex-col">
+                  <div className="flex items-center justify-between">
+                    <h3 className="eyebrow">{group.category}</h3>
+                    <span
+                      className="font-mono text-[10.5px] font-semibold"
+                      style={{ color: "rgb(var(--accent-rgb) / 0.55)" }}
+                    >
+                      0{idx + 1}
+                    </span>
                   </div>
-                </Spotlight>
-              </motion.div>
-            );
-          })}
+                  <div className="mt-6 flex flex-wrap gap-1.5">
+                    {group.items.map((item) => (
+                      <span key={item} className="chip">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Spotlight>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
