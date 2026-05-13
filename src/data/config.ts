@@ -289,9 +289,9 @@ export const config = {
 
   /* -------------------- SOCIAL LINKS -------------------- */
   social: [
-    { label: "GitHub", href: "https://github.com/", icon: "github" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/", icon: "linkedin" },
-    { label: "LeetCode", href: "https://leetcode.com/", icon: "leetcode" },
+    { label: "GitHub", href: "https://github.com/Saini-Anmol", icon: "github" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/anmol-saini-326456257/", icon: "linkedin" },
+    { label: "LeetCode", href: "https://leetcode.com/u/anmolsaini_07/", icon: "leetcode" },
     { label: "Email", href: "mailto:anmolsaini87.40@gmail.com", icon: "mail" },
   ] as SocialLink[],
 
